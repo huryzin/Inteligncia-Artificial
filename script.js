@@ -1,59 +1,117 @@
-const caixaPrincipal = document.querySelector(".caixa-principal ");
+const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.queryselector(".caixa-resultado");
-const textoResultado = document.queryselector(".caixa-resultado");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "1. Qual é o principal fator contribuinte para o aumento das temperaturas globais e as mudanças climáticas?",
+        enunciado: "Na sua opinião deveriamos para de andar com automóveis poluentes?.",
         alternativas: [
-            "a) .A emissão excessiva de gases de efeito estufa, como dióxido de carbono (CO2), metano (CH4) e óxido nitroso (N2O), principalmente pela queima de combustíveis fósseis e desmatamento indiscriminado.",
-            "b) A erosão do solo causada pelo desgaste das atividades agrícolas e urbanização descontrolada, que reduzem a capacidade da Terra de absorver CO2.",
-            "c) A exploração excessiva de recursos naturais, como a extração de minérios e a exploração madeireira, que diminui a biodiversidade e prejudica os ecossistemas, levando a desequilíbrios climáticos.",
+            {
+                texto: "Claro, isso faz mal ao meio-ambiente.",
+                afirmacao: "Sim."
+            },
+            {
+                texto: "Não, isso causaria um impactor economico imenso.",
+                afirmacao: "Não."
+            },
+            {
+                texto: "Sim, e não, eu creio que poderiamos parar de utilizar, mas deveriamos progredir calmamente.",
+                afirmacao: "Depende."
+            }
         ]
     },
     {
-        enunciado: "2. Quais das opções abaixo são consideradas fontes de energia renovável, contribuindo para a redução da dependência de combustíveis fósseis e a mitigação das mudanças climáticas?",
+        enunciado: "Você acredita que o governo deva investir mais em reciclagem?.",
         alternativas: [
-            "a) Energia nuclear, gerada a partir da fissão de átomos de urânio ou plutônio, uma fonte de energia controversa devido aos riscos associados à produção de resíduos nucleares e acidentes nucleares.",
-            "b) Energia hidrelétrica, derivada da energia cinética da água em movimento, capturada por meio de barragens ou turbinas instaladas em rios e quedas d'água.",
-            "c) .Energia solar, obtida através da captura da luz do sol por meio de painéis fotovoltaicos ou coletores solares térmicos.",
+            {
+                texto: "Acredito que sim",
+                afirmacao: "Sim."
+            },
+            {
+                texto: "Acredito que não.",
+                afirmacao: "Não."
+            }
         ]
     },
     {
-        enunciado: "3. Quais são os principais benefícios ambientais da adoção generalizada de práticas de reciclagem?",
+        enunciado: "Após a elaboração do trabalho escrito, a professora realizou um debate entre a turma para entender como foi realizada a pesquisa e escrita. Nessa conversa também foi levantado um ponto muito importante: como a IA impacta o trabalho do futuro. Nesse debate, como você se posiciona?",
         alternativas: [
-            "a) Conservação de recursos naturais não renováveis, como minérios e petróleo, uma vez que materiais reciclados podem ser reutilizados na produção, reduzindo a necessidade de extrair matéria-prima virgem.",
-            "b) .Redução da quantidade de resíduos destinados a aterros sanitários, diminuindo a contaminação do solo, água subterrânea e atmosfera por substâncias tóxicas.",
-            "c) Estímulo à economia circular, na qual produtos e materiais são reutilizados e reciclados continuamente, diminuindo a demanda por novas matérias-primas e reduzindo o impacto ambiental associado à produção e descarte.",
+            {
+                texto: "Defende a ideia de que a IA pode criar novas oportunidades de emprego e melhorar habilidades humanas.",
+                afirmacao: "Vem impulsionando a inovação na área de IA e luta para abrir novos caminhos profissionais com IA."
+            },
+            {
+                texto: "Me preocupo com as pessoas que perderão seus empregos para máquinas e defendem a importância de proteger os trabalhadores.",
+                afirmacao: "Sua preocupação com as pessoas motivou a criar um grupo de estudos entre trabalhadores para discutir meios de utilização de IA de forma ética."
+            }
         ]
     },
     {
-        enunciado: "4. Os conceitos abaixo estão relacionados ao meio ambiente. Apenas um está incorreto. Marque a alternativa que não relaciona o conceito correto:",
+        enunciado: "Ao final da discussão, você precisou criar uma imagem no computador que representasse o que pensa sobre IA. E agora?",
         alternativas: [
-            "a)  Ecologia: ciência responsável pelo estudo das relações entre os seres vivos e o meio ambiente.",
-            "b) .Sustentabilidade: garantia de preservação ambiental em locais protegidos por lei.",
-            "c) Desenvolvimento sustentável: modelo de desenvolvimento socioeconômico a ser implantado nos países para garantir a conservação do meio ambiente junto do seu crescimento econômico e avanço nas pautas sociais.", 
+            {
+                texto: "Criar uma imagem utilizando uma plataforma de design como o Paint.",
+                afirmacao: "Notou também que muitas pessoas não sabem ainda utilizar as ferramentas tradicionais e decidiu compartilhar seus conhecimentos de design utilizando ferramentas de pintura digital para iniciantes."
+            },
+            {
+                texto: "Criar uma imagem utilizando um gerador de imagem de IA.",
+                afirmacao: "Acelerou o processo de criação de trabalhos utilizando geradores de imagem e agora consegue ensinar pessoas que sentem dificuldades em desenhar manualmente como utilizar também!"
+            }
         ]
     },
     {
-        enunciado: "5. (Unesp 2022) Atenta às questões ambientais do planeta, a Organização das Nações Unidas (ONU) propôs no final da década de 1980 uma avaliação dos impactos antrópicos no clima. Com esse objetivo, foi criado",
+        enunciado: "Você tem um trabalho em grupo de biologia para entregar na semana seguinte, o andamento do trabalho está um pouco atrasado e uma pessoa do seu grupo decidiu fazer com ajuda da IA. O problema é que o trabalho está totalmente igual ao do chat. O que você faz? ",
         alternativas: [
-            "a) Desenvolvimento sustentável: modelo de desenvolvimento socioeconômico a ser implantado nos países para garantir a conservação do meio ambiente junto do seu crescimento econômico e avanço nas pautas sociais.",
-            "b) Ecossistema: conjunto formado pelos seres vivos e elementos físicos com os quais interagem, compondo um sistema funcional.",
-            "c) .O Painel Intergovernamental de Mudanças Climáticas, responsável pela produção e divulgação de relatórios pautados na produção científica mundial.",
+            {
+                texto: "Escrever comandos para o chat é uma forma de contribuir com o trabalho, por isso não é um problema utilizar o texto inteiro.",
+                afirmacao: "Infelizmente passou a utilizar a IA para fazer todas suas tarefas e agora se sente dependente da IA para tudo."
+            },
+            {
+                texto: "O chat pode ser uma tecnologia muito avançada, mas é preciso manter a atenção pois toda máquina erra, por isso revisar o trabalho e contribuir com as perspectivas pessoais é essencial.",
+                afirmacao: "Percebeu que toda IA reproduz orientações baseadas na empresa que programou e muito do que o chat escrevia não refletia o que pensava e por isso sabe que os textos gerados pela IA devem servir como auxílio e não resultado final. "
+            }
         ]
     },
-
 ];
+
 
 let atual = 0;
 let perguntaAtual;
+let historiaFinal = "";
 
 function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    atual++;
+    mostraPergunta();
+}
+
+function mostraResultado() {
+    caixaPerguntas.textContent = "Em 2049...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
 }
 
 mostraPergunta();
